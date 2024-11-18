@@ -12,6 +12,7 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    background-color: lightgray
 }
 
 img,
@@ -56,4 +57,226 @@ h6 {
 #root,
 #__next {
     isolation: isolate;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    height: 100vh;
+    padding: 10px;
+    text-align: center;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 2vw;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+
+.book-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.book {
+    flex: 1 1 calc(14.06% - 12px);
+    max-width: calc(14.06% - 12px);
+    aspect-ratio: 1;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: bold;
+    gap: 10px;
+}
+
+.book-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.book-author,
+.book-pages {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.book-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    margin-top: auto;
+}
+
+.read-button {
+    flex: 1;
+    padding: 0.225em 0.375em;
+    font-size: 0.525em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    min-height: 22.5px;
+    transition: background-color 0.3s, transform 0.3s;
+    text-align: center;
+    line-height: 1;
+}
+
+.delete-button {
+    flex: 1;
+    padding: 0.225em 0.375em;
+    font-size: 0.525em;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    min-height: 22.5px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+@media (max-width: 768px) {
+    .book {
+        flex: 1 1 calc(21.09% - 12px);
+        max-width: calc(21.09% - 12px);
+    }
+
+    h1 {
+        font-size: 3vw;
+    }
+
+    .add-button {
+        font-size: 0.6em;
+        padding: 0.5em 1em;
+    }
+
+    .book-title {
+        font-size: 0.9rem;
+    }
+
+    .book-author,
+    .book-pages {
+        font-size: 0.6rem;
+    }
+
+}
+
+@media (max-width: 480px) {
+    .book {
+        flex: 1 1 calc(42.19% - 12px);
+        max-width: calc(42.19% - 12px);
+    }
+
+    h1 {
+        font-size: 5vw;
+    }
+
+    .add-button {
+        font-size: 0.45em;
+        padding: 0.4em 0.8em;
+    }
+
+    .book-title {
+        font-size: 0.45rem;
+    }
+
+    .book-author,
+    .book-pages {
+        font-size: 0.45rem;
+    }
+
+    .read-button {
+        font-size: 0.45em;
+        padding: 0.15em 0.3em;
+        min-width: 26px;
+        min-height: 20px;
+    }
+
+    .delete-button {
+        font-size: 0.45em;
+        padding: 0.15em 0.3em;
+        min-width: 26px;
+        min-height: 20px;
+    }
+
+    .delete-icon {
+        width: 9px;
+        height: 9px;
+    }
+}
+
+.book:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-button {
+    font-size: 0.75em;
+    padding: 0.6em 1.2em;
+    margin-top: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-3px);
+}
+
+.add-button:active {
+    background-color: #003f7f;
+    transform: translateY(1px);
+}
+
+.delete-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.read-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.read-button:active {
+    background-color: #003f7f;
+    transform: translateY(1px);
+}
+
+.delete-button:hover {
+    background-color: #b30000;
+    transform: translateY(-2px);
+}
+
+.delete-button:active {
+    background-color: #660505;
+    transform: translateY(1px);
 }
