@@ -20,10 +20,11 @@ function addBookToLibrary() {
 
 function displayBooks(myLibrary) {
 
-    myLibrary.forEach((books) => {
+    myLibrary.forEach((books, index) => {
         const bookContainer = document.querySelector(".book-container");
         const book = document.createElement("div");
         book.classList.add("book");
+        book.id = `book-${index}`;
         const bookTitle = document.createElement("h4");
         bookTitle.classList.add("book-title");
         const bookAuthor = document.createElement("h5");
@@ -44,8 +45,22 @@ function displayBooks(myLibrary) {
         bookButtons.append(readButton, deleteButton);
         book.append(bookTitle, bookAuthor, bookPages, bookButtons);
         bookContainer.appendChild(book);
-        
+
+        deleteButton.addEventListener("click", () => {
+            deleteBook(index);
+        })
+
     })
 }
 
+
 displayBooks(myLibrary);
+
+function deleteBook(index) {
+    let book = document.getElementById(`book-${index}`);
+    if (book) {
+        book.remove();
+    }
+
+    myLibrary.splice(index, 1);
+}
