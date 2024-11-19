@@ -23,14 +23,21 @@ Book.prototype.toogleRead = function () {
 
 
 function addBookToLibrary() {
+    const title = document.querySelector("#form-title").value;
+    const author = document.querySelector("#form-author").value;
+    const pages = document.querySelector("#form-pages").value;
+    const read = document.querySelector("#form-read").value;
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
+    formDialog.close();
+    displayBooks(myLibrary);
 }
 
 function displayBooks(myLibrary) {
+    const bookContainer = document.querySelector(".book-container");
+    bookContainer.innerHTML = "";
 
     myLibrary.forEach((books, index) => {
-        const bookContainer = document.querySelector(".book-container");
         const book = document.createElement("div");
         book.classList.add("book");
         book.id = `book-${index}`;
@@ -97,7 +104,13 @@ addButton.addEventListener("click", () => {
 
 const closeDialog = document.getElementById('closeDialog');
 closeDialog.addEventListener('click', () => {
-  formDialog.close();
+    formDialog.close();
+});
+
+const form = document.querySelector('form');
+form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    addBookToLibrary();
 });
 
 displayBooks(myLibrary);
