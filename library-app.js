@@ -26,7 +26,7 @@ function addBookToLibrary() {
     const title = document.querySelector("#form-title").value;
     const author = document.querySelector("#form-author").value;
     const pages = document.querySelector("#form-pages").value;
-    const read = document.querySelector("#form-read").value;
+    const read = document.querySelector("#form-read").checked;
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
     formDialog.close();
@@ -105,12 +105,14 @@ addButton.addEventListener("click", () => {
 const closeDialog = document.getElementById('closeDialog');
 closeDialog.addEventListener('click', () => {
     formDialog.close();
+    form.reset()
 });
 
 const form = document.querySelector('form');
 form.addEventListener('submit', function (event) {
     event.preventDefault();
     addBookToLibrary();
+    form.reset()
 });
 
 displayBooks(myLibrary);
