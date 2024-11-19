@@ -89,4 +89,15 @@ function deleteBook(index) {
     myLibrary.splice(index, 1);
 }
 
+const addButton = document.querySelector(".add-button");
+const formDialog = document.querySelector("#formDialog")
+addButton.addEventListener("click", () => {
+    formDialog.showModal();
+})
+
+const closeDialog = document.getElementById('closeDialog');
+closeDialog.addEventListener('click', () => {
+  formDialog.close();
+});
+
 displayBooks(myLibrary);
