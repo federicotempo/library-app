@@ -13,6 +13,15 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
+Book.prototype.toogleRead = function () {
+    if (this.read === true) {
+        this.read = false;
+    } else {
+        this.read = true;
+    }
+}
+
+
 function addBookToLibrary() {
     const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
@@ -40,11 +49,15 @@ function displayBooks(myLibrary) {
         bookTitle.innerHTML = `Book:<br> ${books.title}`;
         bookAuthor.innerHTML = `Author:<br> ${books.author}`;
         bookPages.innerHTML = `Pages:<br> ${books.pages}`;
-        readButton.textContent = `${books.read ? "READ" : "NOT READ"}`;
+        readButton.textContent = `${books.read ? "READ" : "UNREAD"}`;
         deleteButton.innerHTML = `<svg class="delete-icon" width="20px" height="20px" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>delete-alert</title><path d="M17 4V6H3V4H6.5L7.5 3H12.5L13.5 4H17M4 19V7H16V19C16 20.1 15.1 21 14 21H6C4.9 21 4 20.1 4 19M19 15H21V17H19V15M19 7H21V13H19V7Z" /></svg>`
         bookButtons.append(readButton, deleteButton);
         book.append(bookTitle, bookAuthor, bookPages, bookButtons);
         bookContainer.appendChild(book);
+
+        readButton.addEventListener("click", () => {
+            readBook(index);
+        })
 
         deleteButton.addEventListener("click", () => {
             deleteBook(index);
@@ -53,8 +66,19 @@ function displayBooks(myLibrary) {
     })
 }
 
+function readBook(index) {
+    let book = document.getElementById(`book-${index}`).getElementsByTagName("button");
+    let readButton = book[0];
+    if (readButton.textContent === "READ") {
+        readButton.textContent = "UNREAD";
+        readButton.style.background = "red";
+    } else {
+        readButton.textContent = "READ";
+        readButton.style.background = "#007bff";
+    }
+    myLibrary[index].toogleRead();
 
-displayBooks(myLibrary);
+}
 
 function deleteBook(index) {
     let book = document.getElementById(`book-${index}`);
@@ -64,3 +88,5 @@ function deleteBook(index) {
 
     myLibrary.splice(index, 1);
 }
+
+displayBooks(myLibrary);

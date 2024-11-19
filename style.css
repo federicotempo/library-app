@@ -71,9 +71,16 @@ h6 {
 }
 
 h1 {
-    font-size: 2vw;
+    font-size: 2.4vw;
     margin-bottom: 10px;
     line-height: 1.2;
+    font-family: 'Poppins', sans-serif;
+    color: #007bff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 10px;
+    border-bottom: 3px solid #ffffff;
+    
 }
 
 .book-container {
