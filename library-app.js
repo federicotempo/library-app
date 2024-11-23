@@ -1,26 +1,27 @@
 const myLibrary = [];
 
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+
+    toogleRead() {
+        if (this.read === true) {
+            this.read = false;
+        } else {
+            this.read = true;
+        }
+    }
+}
+
 const theHobbit = new Book("The Lord of The Ring", "J.R.R Tolkien", 1216, true);
 const gameOfThrones = new Book("Game of Thrones", "George R.R. Martin", 694, false);
 
 myLibrary.push(theHobbit);
 myLibrary.push(gameOfThrones);
-
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-}
-
-Book.prototype.toogleRead = function () {
-    if (this.read === true) {
-        this.read = false;
-    } else {
-        this.read = true;
-    }
-}
-
 
 function addBookToLibrary() {
     const title = document.querySelector("#form-title").value;
